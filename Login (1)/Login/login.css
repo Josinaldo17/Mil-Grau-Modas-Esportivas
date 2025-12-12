@@ -1,0 +1,115 @@
+/* ===== LAYERS (cor + imagem) ===== */
+
+/* Cor de fundo preenchendo toda a tela */
+.bg-color {
+  position: fixed;
+  inset: 0;
+  background-color: black; /* Mude aqui a cor que você quiser */
+  z-index: 1;
+}
+
+/* Imagem por cima da cor, usando contain */
+.bg-image {
+  position: fixed;
+  inset: 0;
+  background: url('mg-logo.jpg') no-repeat center;
+  background-size: contain; /* Mantém a imagem inteira */
+  z-index: 2;
+  pointer-events: none; /* Não atrapalha o clique */
+}
+
+
+/* ===== FORMULÁRIO ===== */
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* impede scroll */
+  font-family: Arial, sans-serif;
+
+  /* tiramos a imagem daqui */
+}
+
+/* Container principal */
+#Form-Login {
+  display: flex;
+  background: transparent;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  z-index: 3; /* Fica acima da imagem */
+}
+
+/* Info-SCE */
+.Info-SCE {
+  background: white;
+  padding: 40px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.Info-SCE h1 {
+  font-size: 50px;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.Info-SCE h2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* Formulário */
+.form {
+  background: #3c3c48;
+  padding: 40px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+}
+
+.form label {
+  font-size: 14px;
+  color: #c8c8c8;
+}
+
+.form input[type="text"],
+.form input[type="password"] {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #555;
+  padding: 18px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.form input:focus {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #f6d365, #FF4500) 1;
+}
+
+#enviar-form {
+  background: #666;
+  border: none;
+  padding: 12px 0;
+  margin-top: 15px;
+  border-radius: 4px;
+  color: #bbb;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#enviar-form:hover {
+  background: linear-gradient(to right, #f6d365, #FF4500);
+  color: white;
+}
