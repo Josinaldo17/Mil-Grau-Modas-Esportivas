@@ -1,0 +1,323 @@
+/* Variáveis de Cores (NOVO TEMA: Preto, Branco, Vermelho) */
+:root {
+    /* Cores do Novo Tema */
+    --bg-color-main: #f5f5f5; /* Fundo principal claro */
+    --surface-color-main: #ffffff; /* Cor de superfície clara (cards) */
+    --text-color-main: #212529; /* Texto principal (preto escuro) */
+    
+    /* Cores da Sidebar (Dark Theme) */
+    --bg-color-sidebar: #121212; 
+    --surface-color-sidebar: #212529; 
+    --text-color-sidebar: #e0e0e0; 
+    
+    /* Cor de Destaque (Vermelho MIL GRAU) */
+    --primary-color: #E34947; /* Vermelho forte */
+    --secondary-color: #ced4da; /* Cinza claro (para botões) */
+    
+    /* Cores de Alerta */
+    --alert-color-low: #dc3545; /* Vermelho escuro */
+    --alert-color-high: #28a745; /* Verde (sucesso) */
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color-main);
+    color: var(--text-color-main);
+    line-height: 1.6;
+}
+
+/* Layout Principal */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* -------------------------------------- */
+/* Sidebar (Menu Lateral) - DARK THEME */
+/* -------------------------------------- */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-color-sidebar);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.logo-icon {
+    font-size: 1.8em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.nav-menu ul {
+    list-style: none;
+}
+
+.nav-item {
+    display: block;
+    color: var(--text-color-sidebar); /* Texto claro */
+    text-decoration: none;
+    padding: 15px 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+    background-color: #333;
+}
+
+.nav-item i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.nav-item.active {
+    background-color: var(--primary-color); /* Destaque VERMELHO */
+    color: var(--surface-color-main); /* Texto BRANCO */
+    font-weight: bold;
+}
+
+/* Botão Sair na Sidebar */
+.sidebar-footer {
+    margin-top: auto; /* Empurra para baixo */
+    padding-top: 20px;
+}
+.exit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--surface-color-main);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.exit-btn:hover {
+    background-color: #c73735;
+}
+
+
+/* -------------------------------------- */
+/* Main Content (Conteúdo Principal) - LIGHT THEME */
+/* -------------------------------------- */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.header h2 {
+    font-size: 2em;
+    font-weight: 600; /* Mais encorpado no tema esportivo */
+    color: var(--text-color-main);
+    margin-bottom: 20px;
+}
+
+/* Cards (Contêineres de Informação) */
+.card {
+    background-color: var(--surface-color-main);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6; /* Borda sutil */
+}
+
+.filters-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.filter-controls, .period-controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: var(--text-color-main);
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    background-color: var(--surface-color-main);
+    color: var(--text-color-main);
+    font-size: 1em;
+    cursor: pointer;
+}
+.input-field:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(227, 73, 71, 0.25);
+    outline: none;
+}
+
+/* Botões */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 19px;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--surface-color-main);
+}
+
+.primary-btn:hover {
+    background-color: #c73735;
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color-main);
+    border: 1px solid #adb5bd;
+}
+
+.secondary-btn:hover {
+    background-color: #c5c8cb;
+}
+
+/* --- Área de Visualização do Relatório (Métricas e Gráfico) --- */
+.report-view-section h3, .report-view-section h4 {
+    color: var(--text-color-main);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Cartões de Métricas */
+.report-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background-color: var(--surface-color-main);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.metric-card:hover {
+    transform: translateY(-3px);
+}
+
+.metric-card i {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.metric-card p {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.metric-card .value {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: var(--text-color-main);
+}
+
+/* Destaque de Alerta no tema claro */
+.alert-low {
+    border: 1px solid var(--alert-color-low);
+}
+.alert-low .value {
+    color: var(--alert-color-low);
+}
+
+.alert-high {
+    border: 1px solid var(--alert-color-high);
+}
+.alert-high .value {
+    color: var(--alert-color-high);
+}
+
+/* Simulação do Gráfico de Barras */
+.chart-simulation {
+    border-bottom: 1px solid #ced4da;
+}
+.bar {
+    background-color: var(--primary-color);
+}
+.bar-container small {
+    color: var(--text-color-main);
+}
+
+/* Tabela de Relatório */
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-table th, .report-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+    color: var(--text-color-main);
+}
+
+.report-table th {
+    background-color: #e9ecef;
+    color: var(--text-color-main);
+    font-weight: 600;
+}
+
+.report-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Responsividade (Mantida) */
+@media (max-width: 768px) {
+    .period-controls {
+        flex-direction: column;
+    }
+    .filter-group {
+        width: 100%;
+    }
+    .btn {
+        margin-top: 10px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,12 @@
+Padronizar Cabecalhos HTML e BAIXAR BOOTRAP
+
+
+Vendas:
+   Cupom resposivo 
+   Botao de Voltar carrinho
+
+Login   
+    Entrar
+
+Relario
+    CORES e js 

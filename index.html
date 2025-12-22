@@ -1,227 +1,55 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SalesPro - Advanced Sales Dashboard</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<!-- REVER -->
 
+<title>Login</title>
+<!-- REVER -->
+
+<link rel="stylesheet" href="../src/assets/css/login.css">
+<!-- REVER -->
+<!-- REVER -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Seção principal -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- REVER -->
 </head>
+
 <body>
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar d-flex flex-column" >
+    <div class="container hero">
+        
+        <div class="login-card p-5 shadow text-white">
+            <div class="d-flex justify-content-center mb-4">
+                <div class="col-lg-6 col-md-8 col-sm-10"> 
+                    <img src="../src/assets/img/logo.png" alt="Logo Imagem" class="img-fluid" style="width: 100%; height: auto;">
+                    <div class="login">Login</div>
+                </div>
+            </div>
+            <form>
+                <div class="mb-3 input-group">
+                <span class="input-group-text bg-transparent border-0 text-black"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control bg-transparent border-0 border-bottom text-white" placeholder="ID | Usuario">
+                </div>
+                <div class="mb-3 input-group">
+                <span class="input-group-text bg-transparent border-0 text-black"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control bg-transparent border-0 border-bottom text-white" placeholder="Senha">
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check"></div>
+                <a href="#" class="small text-white-50 text-decoration-none">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="btn btn-warning w-100">LOGIN</button>
 
+            </form>
+        </div>
     </div>
-    <!-- Content Wrapper -->
-    <div class="content-wrapper ">
-        <!-- Topbar -->
-        <nav id='sidebar_navbar' class="navbar  d-flex justify-content-end align-items-center ">
-            <div class="container nav-mobile d-none">
-                <img src="../img/logo.png" class="img-logo-nav navbar-brand" href="#" width="100px">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>   
-                <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="ms-auto"></div>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Produtos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Funcionarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Vendas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Relatório</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Configuraçoes</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="user-menu">
-                
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=4361ee&color=fff" alt="User" class="user-avatar">
-                        <span class="d-none d-md-inline ms-2">John Doe</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Sair</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js'>       
 
-        <!-- Main Content -->
-        <main class="container-fluid px-4 py-4">
-          
-            <div class="container">
-                <div class="row">
-                    <!-- Produtos -->
-                    <div class="col-lg-8">
-                        
-                        <!-- Produto 1 -->
-                        <div class="card mb-3 p-3">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-md-2  mx-2">
-                                    <img src="https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg" class="img-fluid w-100" alt="Produto">
-                                </div>
-                                <div class="col-md-5">
-                                    <h6>Camisa Polo Masculina ASICS Manga Curta Botões</h6>
-                                    <p class="mb-1">Tamanho: G</p>
-                                    <p class="mb-1">Cor: branco</p>
-                                    
-                                </div>
-                                <div class="col-md-4 text-end">
-                                    <button class="btn btn-outline-danger btn-sm me-2">🗑</button>
-                                    <span>1</span>
-                                    <button class="btn btn-outline-secondary btn-sm ms-2">+</button>
-                                   <p class="mt-2"> <!-- <small><s>R$ 149,99</s></small><br>--><strong>R$ 59,99</strong></p> 
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Produto 2 -->
-                        <div class="card mb-3 p-3">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-md-2  mx-2">
-                                    <img src="https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg" class="img-fluid" alt="Produto">
-                                </div>
-                                <div class="col-md-5">
-                                    <h6>Tênis Nike Revolution 7 Masculino</h6>
-                                    <p class="mb-1">Tamanho: 39</p>
-                                    <p class="mb-1">Cor: preto</p>
-                                    
-                                </div>
-                                <div class="col-md-4 text-end">
-                                    <button class="btn btn-outline-danger btn-sm me-2">🗑</button>
-                                    <span>1</span>
-                                    <button class="btn btn-outline-secondary btn-sm ms-2">+</button>
-                                    <p class="mt-2"><!--<small><s>R$ 399,99</s></small><br>--><strong>R$ 219,99</strong></p>
-                                </div>
-                            </div>
-                        </div>
-
-                     
-                       
-                        <!-- Cupom -->
-                        <div class="card p-3">
-                            <h6>Cupom de desconto</h6>
-                            <div class="input-group mt-2">
-                                <input type="text" class="form-control" placeholder="Digite o cupom">
-                                <button class="btn btn-secondary">Adicionar</button>
-                            </div>
-                            
-                        </div>
-
-                    </div>
-
-                    <!-- Resumo -->
-                    <div class="col-lg-4">
-                        <div class="card p-4">
-                            <h6 class="d-flex justify-content-between">
-                                <span>Produtos</span>
-                                <span>R$ 549,98</span>
-                            </h6>
-                            <h6 class="d-flex justify-content-between text-success">
-                                <span>Desconto em produtos</span>
-                                <span>-R$ 270,00</span>
-                            </h6>
-                           
-
-                            <hr>
-
-                            <h4 class="d-flex justify-content-between">
-                                <span>Total</span>
-                                <span>R$ 265,98 </span>
-                            </h4>
-                            
-
-                            <button class="btn btn-danger w-100">Continuar</button>
-                        </div>
-
-                        
-                    </div>
-                </div>
-            </div>
-
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            © 2025 SOFTEX T03MAC1
-        </footer>
-    </div>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-
-    
-    <script>
-    // Variáveis
-    const LINK_IMAGEM_PADRAO = "https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg";
-    let link_input = document.getElementById("url");
-    let imagens = [];
-    let galeria = document.getElementById("galeria");
-
-
-    // Função para renderizar a galeria
-    function renderizarGaleria() {
-        galeria.innerHTML = '';
-
-        imagens.forEach((linkDaImagem, index) => {
-        let colDiv = document.createElement("div");
-        colDiv.className = 'col-6 col-sm-4 col-md-3 mb-4';
-
-        let img = document.createElement("img");
-        img.src = linkDaImagem;
-        img.alt = 'Imagem do Produto';
-        img.className = 'product-img';
-
-        let itemCard = document.createElement("div");
-        itemCard.className = 'product-card';
-        itemCard.innerHTML = `<p class="mt-2">Item #${index + 1}</p>`;
-
-        let itembnt = document.createElement("button");
-        itembnt.className = 'btn btn-success w-100';
-        itembnt.textContent = 'Adicionar';
-
-
-
-        colDiv.appendChild(img);
-        colDiv.appendChild(itemCard);
-        colDiv.appendChild(itembnt);
-        galeria.appendChild(colDiv);
-        });
-    }
-
-    // Adiciona alguns itens iniciais para demonstração
-    document.addEventListener('DOMContentLoaded', () => {
-        imagens.push(LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO);
-        renderizarGaleria();
-    });
-    </script>
-    <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/components/main.js"></script>
+    </script><script  src="../src/assets/js/login.js"></script>
 
 </body>
+  
 </html>
-
-
-    
-               

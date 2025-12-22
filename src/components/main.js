@@ -61,7 +61,7 @@ document.querySelector('#sidebar').innerHTML = `
 
 document.querySelector('#sidebar_navbar').innerHTML = `
     <div class="container nav-mobile d-none">
-        <img src="../img/logo.png" class="img-logo-nav navbar-brand" href="#" width="100px">
+        <img src=${logo} class="img-logo-nav navbar-brand" href="#" width="100px">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>   
@@ -105,4 +105,10 @@ document.querySelector('#sidebar_navbar').innerHTML = `
         </div>
     </div>
     
+`
+
+
+document.querySelector('#footer_main').innerHTML = `
+ © 2025 SOFTEX T03MAC1
+ 
 `
