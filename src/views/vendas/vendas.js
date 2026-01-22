@@ -1,5 +1,5 @@
 export const VendasView = () => {
-    return `<main class="container-fluid px-4 py-4" id="main-content">
+    return `<main class="container-fluid px-4 py-4"">
           
 
             <div class="container-fluid mt-4">

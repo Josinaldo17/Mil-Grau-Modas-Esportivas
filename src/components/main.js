@@ -11,7 +11,7 @@ const routes = {
     '/funcionarios': { title: 'Funcionários', render: FuncionariosView },
     '/dashboard': { title: 'Dashboard', render: DashboardView },
     '/relatorio': { title: 'Relatorio', render: RelatorioView },
-    '/config': { title: 'Relatorio', render: ConfiguracaoView },
+    '/config': { title: 'Configuracao', render: ConfiguracaoView },
     
 };
 
