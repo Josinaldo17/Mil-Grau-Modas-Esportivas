@@ -1,28 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SalesPro - Advanced Sales Dashboard</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-</head>
-<body>
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar d-flex flex-column" >
-
-    </div>
-    <!-- Content Wrapper -->
-    <div class="content-wrapper ">
-        <!-- Topbar -->
-        <nav id='sidebar_navbar' class="navbar  d-flex justify-content-end align-items-center ">
-        </nav>
-
-        <!-- Main Content -->
-        <main class="container-fluid px-4 py-4" id="main-content">
+export const VendasView = () => {
+    return `<main class="container-fluid px-4 py-4"">
           
 
             <div class="container-fluid mt-4">
@@ -98,70 +75,6 @@
             
             
             
-        </main>
+        </main>`;
+};
 
-        <!-- Footer -->
-        <footer id="footer_main" class="footer">
-           
-        </footer>
-    </div>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-    
-    <script>
-    // Variáveis
-    const LINK_IMAGEM_PADRAO = "https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg";
-    let link_input = document.getElementById("url");
-    let imagens = [];
-    let galeria = document.getElementById("galeria");
-
-
-    // Função para renderizar a galeria
-    function renderizarGaleria() {
-        galeria.innerHTML = '';
-
-        imagens.forEach((linkDaImagem, index) => {
-        let colDiv = document.createElement("div");
-        colDiv.className = 'col-6 col-sm-4 col-md-3 mb-4';
-
-        let img = document.createElement("img");
-        img.src = linkDaImagem;
-        img.alt = 'Imagem do Produto';
-        img.className = 'product-img';
-
-        let itemCard = document.createElement("div");
-        itemCard.className = 'product-card';
-        itemCard.innerHTML = `<p class="mt-2">Item #${index + 1}</p>`;
-
-        let itembnt = document.createElement("button");
-        itembnt.className = 'btn btn-success w-100';
-        itembnt.textContent = 'Adicionar';
-
-
-
-        colDiv.appendChild(img);
-        colDiv.appendChild(itemCard);
-        colDiv.appendChild(itembnt);
-        galeria.appendChild(colDiv);
-        });
-    }
-
-    // Adiciona alguns itens iniciais para demonstração
-    document.addEventListener('DOMContentLoaded', () => {
-        imagens.push(LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO);
-        renderizarGaleria();
-    });
-    </script>
-    <script type="module" src="/src/components/main.js"></script>
-    <script>
-      window.MODO_TELA = 'vendas';
-    </script>
-
-</body>
-</html>
-
-
-    
-               

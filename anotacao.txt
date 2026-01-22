@@ -1,3 +1,6 @@
+APAGAR HTML das pastas
+
+
 Padronizar Cabecalhos HTML e BAIXAR BOOTRAP
 
 
