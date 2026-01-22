@@ -12,32 +12,32 @@ document.querySelector('#sidebar').innerHTML = `
     <div class="sidebar-nav flex-grow-1">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" id="nav-inicio" href="#">
                     <i class="fas fa-home"></i> 
                     <span>Inicio</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" id="nav-produtos" href="produtos.html">
                     <i class="fa-solid fa-shirt"></i>
                     <span>Produtos</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" "nav-funcionarios" href="#">
                     <i class="fas fa-users"></i>
                     <span>Funcionarios</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" id="nav-vendas" href="vendas.html">
                     <i class="fas fa-shopping-cart"></i>
                     <span>Vendas</span>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" "nav-relatorio" href="relatorio.html">
                     <i class="fas fa-chart-bar"></i>
                     <span>Relatório</span>
                 </a>
@@ -106,6 +106,28 @@ document.querySelector('#sidebar_navbar').innerHTML = `
     </div>
     
 `
+function ativarMenuAtual() {
+    const caminho = window.location.pathname.toLowerCase();
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    if (caminho.includes('produtos')) {
+        document.getElementById('nav-produtos')?.classList.add('active');
+    } 
+    else if (caminho.includes('vendas')) {
+        document.getElementById('nav-vendas')?.classList.add('active');
+    } 
+    else if (caminho.includes('funcionarios')) {
+        document.getElementById('nav-funcionarios')?.classList.add('active');
+    } 
+    else {
+        document.getElementById('nav-inicio')?.classList.add('active');
+    }
+}
+
+ativarMenuAtual();
 
 
 document.querySelector('#footer_main').innerHTML = `
