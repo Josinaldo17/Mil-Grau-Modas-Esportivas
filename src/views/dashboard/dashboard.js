@@ -1,3 +1,8 @@
+export function iniciarDashboard() {
+  atualizarMetricasEstoque();
+  renderizarGraficoDashboard();
+}
+
 export const DashboardView = () => {
     return `<main id="dashboard" class="container-fluid py-4">
 
@@ -157,14 +162,7 @@ function atualizarMetricasEstoque() {
   if (baixoEl) baixoEl.innerText = baixoEstoque;
 }
 
-function iniciarDashboard() {
-  atualizarMetricasEstoque();
-  renderizarGraficoDashboard();
-}
 
-setTimeout(() => {
-  iniciarDashboard();
-}, 0);
 
 
 

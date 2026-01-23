@@ -2,6 +2,7 @@ import '../assets/css/style.css'
 import '../assets/css/vendas.css'
 import logo from '../assets/img/logo.png'
 import { FuncionariosView } from '../views/funcionarios/funcionario.js';
+import { iniciarDashboard } from '../views/dashboard/dashboard.js';
 import { DashboardView } from '../views/dashboard/dashboard.js';
 import { ConfiguracaoView } from '../views/config/configuracao.js';
 import { RelatorioView } from '../views/relatorio/relatorio.js';
@@ -41,6 +42,9 @@ const router = () => {
         mainContent.innerHTML = typeof route.render === 'function' ? route.render() : route.render;
         if (route.init) route.init();
         
+        if (path === '/' || path === '/dashboard') {
+        iniciarDashboard();
+        }
         // --- ADICIONE ISSO AQUI ---
         handleActiveLink(); 
     }
