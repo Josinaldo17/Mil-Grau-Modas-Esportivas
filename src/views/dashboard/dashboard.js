@@ -15,7 +15,7 @@ export const DashboardView = () => {
                     <div class="card shadow-sm border-0">
                         <div class="card-body">
                             <h6 class="card-title text-muted">Produtos com Baixo Estoque</h6>
-                            <p class="numero-baixo-estoque h2 mb-0">18</p>
+                            <p class="numero-baixo-estoque h2 mb-0"></p>
                             
                         </div>
                     </div>
@@ -24,7 +24,7 @@ export const DashboardView = () => {
                     <div class="card shadow-sm border-0">
                         <div class="card-body">
                             <h5 class="card-title text-muted">Itens no Estoque</h5>
-                            <p class="quantidade-itens-estoque h2 mb-0">987</p>
+                            <p class="quantidade-itens-estoque h2 mb-0"></p>
                             
                         </div>
                     </div>
@@ -44,8 +44,8 @@ export const DashboardView = () => {
                 <div class="col-12 col-lg-9">
                     <div class="Graficos card shadow border-0 h-100">
                         <div class="card-body">
-                            <div class="img-graficos bg-light rounded d-flex align-items-center justify-content-center p-5 mt-3" style="min-height: 250px;">
-                                [Placeholder para Gráfico]
+                            <div class="img-graficos bg-light rounded p-3 mt-3" style="min-height: 250px;">
+                                <canvas id="graficoProdutos"></canvas>
                             </div>
                         </div>
                     </div>
@@ -74,3 +74,97 @@ export const DashboardView = () => {
             
         </main>`;
 };
+
+function renderizarGraficoDashboard() {
+  const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+  const nomes = produtos.map(p => p.nome);
+  const quantidade = produtos.map(p => p.quantidade);
+
+  const canvas = document.getElementById('graficoProdutos');
+  if (!canvas) return;
+
+  new Chart(canvas, {
+  type: 'bar',
+  data: {
+    labels: nomes,
+    datasets: [{
+      label: 'Quantidade em Estoque:',
+      data: quantidade,
+      backgroundColor: 'rgb(231, 135, 25)',
+      borderColor: 'rgb(231, 135, 25)',
+      borderWidth: 2,
+      borderRadius: 8,
+      hoverBackgroundColor: 'rgb(116, 76, 25)'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 14
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1
+        },
+        title: {
+          display: true,
+          text: 'Quantidade'
+        }
+      },
+      x: {
+        title: {
+          display: true,
+          text: 'Produtos'
+        }
+      }
+    }
+  }
+});
+}
+// setTimeout(renderizarGraficoDashboard, 0);
+
+
+function atualizarMetricasEstoque() {
+  const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+  let totalItens = 0;
+  let baixoEstoque = 0;
+
+  produtos.forEach(p => {
+    const qtd = Number(p.quantidade) || 1; // fallback
+    totalItens += qtd;
+
+    if (qtd <= 3) {
+      baixoEstoque++;
+    }
+  });
+
+  // Atualiza DOM
+  const totalEl = document.querySelector('.quantidade-itens-estoque');
+  const baixoEl = document.querySelector('.numero-baixo-estoque');
+
+  if (totalEl) totalEl.innerText = totalItens;
+  if (baixoEl) baixoEl.innerText = baixoEstoque;
+}
+
+function iniciarDashboard() {
+  atualizarMetricasEstoque();
+  renderizarGraficoDashboard();
+}
+
+setTimeout(() => {
+  iniciarDashboard();
+}, 0);
+
+
+
