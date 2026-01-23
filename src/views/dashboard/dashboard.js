@@ -14,7 +14,7 @@ export const DashboardView = () => {
                 <div class="col">
                     <div class="card shadow-sm border-0">
                         <div class="card-body">
-                            <h5 class="card-title text-muted">Produtos com Baixo Estoque</h5>
+                            <h6 class="card-title text-muted">Produtos com Baixo Estoque</h6>
                             <p class="numero-baixo-estoque h2 mb-0">18</p>
                             
                         </div>

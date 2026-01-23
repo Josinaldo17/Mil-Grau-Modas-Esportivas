@@ -79,24 +79,48 @@ export const VendasView = () => {
             
             `;
 };
-
-// 2. Criamos uma função separada para popular a galeria
+// 2. Criamos uma função separada para popular a galeria de VENDAS
 export const initVendasEvents = () => {
     const galeria = document.getElementById("galeria");
     if (!galeria) return;
 
+    // 1. Pegamos os produtos REAIS que foram cadastrados no sistema
+    const produtosReais = JSON.parse(localStorage.getItem('produtos')) || [];
+
     galeria.innerHTML = ''; // Limpa antes de renderizar
 
-    imagens.forEach((linkDaImagem, index) => {
+    // 2. Se não tiver produto nenhum, mostra um aviso
+    if (produtosReais.length === 0) {
+        galeria.innerHTML = '<p class="text-center text-muted">Nenhum produto cadastrado no estoque.</p>';
+        return;
+    }
+
+    // 3. Renderiza a galeria usando os dados do LocalStorage
+    produtosReais.forEach((produto) => {
         let colDiv = document.createElement("div");
         colDiv.className = 'col-6 col-sm-4 col-md-3 mb-4';
+        
+        // Mantendo exatamente o seu esqueleto, mas trocando os dados
         colDiv.innerHTML = `
             <div class="product-card text-center">
-                <img src="${linkDaImagem}" class="img-fluid product-img" alt="Produto">
-                <p class="mt-2">Item #${index + 1}</p>
-                <button class="btn btn-success w-100">Adicionar</button>
+                <img src="${produto.imagem}" class="img-fluid product-img" alt="${produto.nome}" >
+                <p class="mt-2">${produto.nome}</p>
+                <p class="text-success">R$ ${parseFloat(produto.preco).toFixed(2)}</p>
+                <button class="btn btn-success w-100 btn-adicionar-carrinho" data-id="${produto.id}">
+                    Adicionar
+                </button>
             </div>
         `;
         galeria.appendChild(colDiv);
     });
+
+    // 4. Aqui você pode adicionar a lógica do clique do botão "Adicionar"
+    document.querySelectorAll('.btn-adicionar-carrinho').forEach(btn => {
+        btn.onclick = () => {
+            const id = btn.getAttribute('data-id');
+            console.log("Produto adicionado ao carrinho ID:", id);
+            // Aqui futuramente você faz a lógica de somar no carrinho
+        };
+    });
 };
+
