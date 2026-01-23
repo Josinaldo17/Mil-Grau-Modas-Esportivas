@@ -1,8 +1,12 @@
-export const VendasView = () => {
-    return `<main class="container-fluid px-4 py-4"">
-          
+// src/views/vendas/vendas.js
 
-            <div class="container-fluid mt-4">
+const LINK_IMAGEM_PADRAO = "https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg";
+let imagens = [LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO, LINK_IMAGEM_PADRAO];
+
+
+export const VendasView = () => {
+    // 1. Primeiro retornamos o HTML base
+    return `<div class="container-fluid mt-4">
                 <div class="row">
     
                     <!-- Barra lateral de filtros -->
@@ -73,8 +77,26 @@ export const VendasView = () => {
                 </div>
             </div>
             
-            
-            
-        </main>`;
+            `;
 };
 
+// 2. Criamos uma função separada para popular a galeria
+export const initVendasEvents = () => {
+    const galeria = document.getElementById("galeria");
+    if (!galeria) return;
+
+    galeria.innerHTML = ''; // Limpa antes de renderizar
+
+    imagens.forEach((linkDaImagem, index) => {
+        let colDiv = document.createElement("div");
+        colDiv.className = 'col-6 col-sm-4 col-md-3 mb-4';
+        colDiv.innerHTML = `
+            <div class="product-card text-center">
+                <img src="${linkDaImagem}" class="img-fluid product-img" alt="Produto">
+                <p class="mt-2">Item #${index + 1}</p>
+                <button class="btn btn-success w-100">Adicionar</button>
+            </div>
+        `;
+        galeria.appendChild(colDiv);
+    });
+};

@@ -5,14 +5,16 @@ import { FuncionariosView } from '../views/funcionarios/funcionario.js';
 import { DashboardView } from '../views/home/dashboard.js';
 import { ConfiguracaoView } from '../views/config/configuracao.js';
 import { RelatorioView } from '../views/relatorio/relatorio.js';
-
+import { ProdutosView, initProdutos } from  '../views/produtos/produtos.js';
+import { VendasView, initVendasEvents } from '../views/vendas/vendas.js';
 
 const routes = {
     '/funcionarios': { title: 'Funcionários', render: FuncionariosView },
     '/dashboard': { title: 'Dashboard', render: DashboardView },
     '/relatorio': { title: 'Relatorio', render: RelatorioView },
     '/config': { title: 'Configuracao', render: ConfiguracaoView },
-    
+    '/produtos': { title: 'Produtos', render: ProdutosView, init: initProdutos },
+    '/vendas': { title: 'Vendas',render: VendasView, init: initVendasEvents },
 };
 
 const router = () => {
@@ -76,7 +78,7 @@ document.querySelector('#sidebar').innerHTML = `
     <div class="sidebar-nav flex-grow-1">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" id="nav-inicio" href="/dashboard" data-link>
+                <a class="nav-link" href="/dashboard" data-link>
                     <i class="fas fa-home"></i> 
                     <span>Inicio</span>
                 </a>
@@ -88,20 +90,20 @@ document.querySelector('#sidebar').innerHTML = `
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/funcionarios" data-link>
                     <i class="fas fa-users"></i>
                     <span>Funcionarios</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="/vendas" data-link>
                     <i class="fas fa-shopping-cart"></i>
                     <span>Vendas</span>
                 </a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/relatorio" data-link>
                     <i class="fas fa-chart-bar"></i>
                     <span>Relatório</span>
                 </a>
@@ -170,28 +172,6 @@ document.querySelector('#sidebar_navbar').innerHTML = `
     </div>
     
 `
-function ativarMenuAtual() {
-    const caminho = window.location.pathname.toLowerCase();
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-    });
-
-    if (caminho.includes('produtos')) {
-        document.getElementById('nav-produtos')?.classList.add('active');
-    } 
-    else if (caminho.includes('vendas')) {
-        document.getElementById('nav-vendas')?.classList.add('active');
-    } 
-    else if (caminho.includes('funcionarios')) {
-        document.getElementById('nav-funcionarios')?.classList.add('active');
-    } 
-    else {
-        document.getElementById('nav-inicio')?.classList.add('active');
-    }
-}
-
-ativarMenuAtual();
 
 
 document.querySelector('#footer_main').innerHTML = `
