@@ -4,6 +4,7 @@ const usuariosFixos = [
     { id: 'funcionario', senha: 'funcionario123', nome: 'Vendedor', cargo: 'Funcionário' }
 ];
 
+
 // Se já estiver logado e tentar abrir o login, pula direto pra main
 if (localStorage.getItem('usuarioLogado')) {
     window.location.href = '/src/main.html';
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('usuarioLogado', JSON.stringify(logado));
                 window.location.href = '/src/main.html';
             } else {
-                alert('Login inválido! Use: adm, gerente ou funcionario.');
+                alert('Login inválido! Use: adm, gerente ou funcionario \nSenha: adm123, gerente123 ou funcionario123 . ');
             }
         });
     }

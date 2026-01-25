@@ -1,9 +1,3 @@
-// Variável de dados (fora da função para não resetar)
-let produtos = JSON.parse(localStorage.getItem('produtos')) || [
-    { id: 1, nome: "Tênis Nike", imagem: "https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg", preco: 299.90 },
-    { id: 2, nome: "Tênis Adidas", imagem: "https://imgcentauro-a.akamaihd.net/660x660/M17DRV46A4.jpg", preco: 99.90 }
-];
-
 export const ProdutosView = () => {
     return `
  <main class="container-fluid px-4 py-4">
@@ -150,6 +144,7 @@ export const ProdutosView = () => {
 };
 
 export const initProdutos = () => {
+    let produtos = JSON.parse(localStorage.getItem('produtos'))
     const galeria = document.getElementById('galeria-produtos');
     const modalElement = document.getElementById('modalProduto');
     

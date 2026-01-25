@@ -22,12 +22,12 @@ export const ConfiguracaoView = () => {
 
                     <div class="mb-3">
                         <label class="form-label">Nome</label>
-                        <input type="text" class="form-control" value="John Doe">
+                        <input type="text" class="form-control" value="Adminstrador">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" value="john@email.com">
+                        <input type="email" class="form-control" value="adminstrador@email.com">
                     </div>
 
                     <button class="btn btn-primary w-100">Salvar alterações</button>

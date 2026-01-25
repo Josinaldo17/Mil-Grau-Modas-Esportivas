@@ -1,4 +1,3 @@
-
 export const VendasView = () => {
     return `
     <div id="vendas-container" class="container-fluid mt-4">

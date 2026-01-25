@@ -1,4 +1,4 @@
-export function iniciarDashboard() {
+export const initDashboard = () => { 
   atualizarMetricasEstoque();
   renderizarGraficoDashboard();
 }
@@ -68,13 +68,14 @@ export const DashboardView = () => {
             <section class="atalhos mt-5">
                 <h2 class="mb-3">Atalhos Rápidos</h2>
                 <div class="grade-atalhos row row-cols-1 row-cols-md-3 g-3">
-                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg">Cadastrar Produto</div></div>
-                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg">Listar Produtos</div></div>
-                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg">Excluir Produtos</div></div>
-                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg">Registrar Venda</div></div>
-                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg">Listar Vendas</div></div>
-                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg">Relatórios</div></div>
+                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg" onclick="window.location.href = '/produtos'">Cadastrar Produto</div></div>
+                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg" onclick="window.location.href = '/produtos'">Listar Produtos</div></div>
+                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg" onclick="window.location.href = '/produtos'">Excluir Produtos</div></div>
+                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg" onclick="window.location.href = '/vendas'" >Registrar Venda</div></div>
+                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg" onclick="window.location.href = '/vendas'">Listar Vendas</div></div>
+                    <div class="col"><div class="card bg-light border-0 text-center shadow-sm p-3 cursor-pointer hover-shadow-lg" onclick="window.location.href = '/relatorio'">Relatórios</div></div>
                 </div>
+                
             </section>
             
         </main>`;
@@ -140,26 +141,56 @@ function renderizarGraficoDashboard() {
 
 
 function atualizarMetricasEstoque() {
-  const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+    // 1. DADOS DO ESTOQUE
+    const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+    let totalItensEstoque = 0;
+    let baixoEstoqueCount = 0;
 
-  let totalItens = 0;
-  let baixoEstoque = 0;
+    produtos.forEach(p => {
+        const qtd = Number(p.quantidade) || 0;
+        totalItensEstoque += qtd;
+        if (qtd <= 5) baixoEstoqueCount++; // Alerta para menos de 5 unidades
+    });
 
-  produtos.forEach(p => {
-    const qtd = Number(p.quantidade) || 1; // fallback
-    totalItens += qtd;
+    // 2. DADOS DE VENDAS (O Coração do Dash)
+    const vendas = JSON.parse(localStorage.getItem('vendas_realizadas')) || [];
+    const hoje = new Date().toLocaleDateString();
 
-    if (qtd <= 3) {
-      baixoEstoque++;
-    }
-  });
+    let faturamentoHoje = 0;
+    let itensVendidosHoje = 0;
+    let mapaProdutosVendidos = {}; // Para ranking
 
-  // Atualiza DOM
-  const totalEl = document.querySelector('.quantidade-itens-estoque');
-  const baixoEl = document.querySelector('.numero-baixo-estoque');
+    vendas.forEach(venda => {
+        // Verifica se a venda foi hoje (comparando a string da data)
+        if (venda.data.includes(hoje)) {
+            faturamentoHoje += venda.total;
+            
+            venda.itens.forEach(item => {
+                itensVendidosHoje += item.qtd;
+                
+                // Agrupar para o ranking
+                mapaProdutosVendidos[item.nome] = (mapaProdutosVendidos[item.nome] || 0) + item.qtd;
+            });
+        }
+    });
 
-  if (totalEl) totalEl.innerText = totalItens;
-  if (baixoEl) baixoEl.innerText = baixoEstoque;
+    // 3. RANKING DE PRODUTOS
+    const listaRanqueada = Object.entries(mapaProdutosVendidos).sort((a, b) => b[1] - a[1]);
+    const maisVendido = listaRanqueada.length > 0 ? listaRanqueada[0][0] : "Nenhuma venda";
+    const menosVendido = listaRanqueada.length > 1 ? listaRanqueada[listaRanqueada.length - 1][0] : "Nenhuma venda";
+
+    // --- ATUALIZAÇÃO DO DOM ---
+    
+    // Métricas Superiores
+    document.querySelector('.valor-diario').innerText = `R$ ${faturamentoHoje.toFixed(2)}`;
+    document.querySelector('.numero-baixo-estoque').innerText = baixoEstoqueCount;
+    document.querySelector('.quantidade-itens-estoque').innerText = totalItensEstoque;
+    document.querySelector('.numero-vendas').innerText = itensVendidosHoje;
+
+    // Métricas Laterais
+    document.querySelector('.mais-vendas').innerText = maisVendido;
+    document.querySelector('.menos-vendas').innerText = menosVendido;
+    document.querySelector('.itens-reabastecimento').innerText = `${baixoEstoqueCount} Itens`;
 }
 
 
