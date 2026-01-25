@@ -1,7 +1,7 @@
 import '../assets/css/style.css'
 import '../assets/css/vendas.css'
 import logo from '../assets/img/logo.png'
-import { FuncionariosView } from '../views/funcionarios/funcionario.js';
+import { FuncionariosView, initFuncionarios } from '../views/funcionarios/funcionario.js';
 import { iniciarDashboard } from '../views/dashboard/dashboard.js';
 import { DashboardView } from '../views/dashboard/dashboard.js';
 import { ConfiguracaoView } from '../views/config/configuracao.js';
@@ -23,7 +23,7 @@ window.logoutUser = () => {
 
 const routes = {
     '/': { title: 'Dashboard', render: DashboardView }, 
-    '/funcionarios': { title: 'Funcionários', render: FuncionariosView },
+    '/funcionarios': { title: 'Funcionários', render: FuncionariosView, init: initFuncionarios },
     '/dashboard': { title: 'Dashboard', render: DashboardView },
     '/relatorio': { title: 'Relatorio', render: RelatorioView },
     '/config': { title: 'Configuracao', render: ConfiguracaoView },
