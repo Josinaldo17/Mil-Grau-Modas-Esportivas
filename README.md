@@ -47,8 +47,3 @@ Siga os passos abaixo para executar o projeto em seu ambiente local:
 
 3.  **Acessar o sistema:**
     O terminal irá gerar um link (geralmente `http://localhost:5173/`). Copie esse link e cole no seu navegador para abrir o SPORTSTOCK.
-
----
-Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
-Nenhum ficheiro selecionado
-Attach files by dragging & dropping, selecting or pasting them.
